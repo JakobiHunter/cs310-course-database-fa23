@@ -3,10 +3,11 @@ package edu.jsu.mcis.cs310.coursedb.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class StudentDAO {
     
-    private static final String QUERY_FIND = "SELECT * FROM student WHERE username = ?";
+    private static final String QUERY_FIND = "SELECT";
     
     private final DAOFactory daoFactory;
     
@@ -16,31 +17,31 @@ public class StudentDAO {
     
     public int find(String username) {
         
-        int id = 0;
+        int i_d_ = 0;
         
         try {
             
-            Connection conn = daoFactory.getConnection();
+            Connection x = daoFactory.getConnection();
             
-            PreparedStatement pstmt = conn.prepareStatement(QUERY_FIND);
-            pstmt.setString(1, username);
+            PreparedStatement Prep_State = x.prepareStatement(QUERY_FIND);
+            Prep_State.setString(1, username);
             
-            boolean hasresults = pstmt.execute();
+            boolean results = Prep_State.execute();
             
-            if ( hasresults ) {
+            if (results ) {
                 
-                ResultSet resultset = pstmt.getResultSet();
+                ResultSet resultset = Prep_State.getResultSet();
                 
                 if (resultset.next())
                     
-                    id = resultset.getInt("id");
+                    i_d_ = resultset.getInt("id");
                 
             }
             
         }
-        catch (Exception e) { e.printStackTrace(); }
+        catch (SQLException e) { e.printStackTrace(); }
         
-        return id;
+        return i_d_;
         
     }
         
