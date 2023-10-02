@@ -3,7 +3,7 @@ package edu.jsu.mcis.cs310.coursedb;
 import edu.jsu.mcis.cs310.coursedb.dao.*;
 import org.junit.*;
 import static org.junit.Assert.*;
-import com.github.cliftonlabs.json_simple.*;
+import co.github.cliftonlabs.json_simple.*;
 
 public class CourseRegistrationDatabaseTest {
 
